@@ -28,38 +28,21 @@
                         @csrf
 
                         <!-- Full Name Fields -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <!-- First Name -->
-                            <div class="space-y-2">
-                                <label for="firstName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    First Name
-                                </label>
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <i class="fas fa-user text-gray-400"></i>
-                                    </div>
-                                    <input id="firstName" name="first_name" type="text" required
-                                        class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg
-                                        focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
-                                        dark:bg-gray-700 dark:text-white text-sm"
-                                        placeholder="John">
-                                </div>
-                            </div>
+                     
 
-                            <!-- Last Name -->
                             <div class="space-y-2">
-                                <label for="lastName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Last Name
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                     Name
                                 </label>
                                 <div class="relative">
-                                    <input id="lastName" name="last_name" type="text" required
+                                    <input id="name" name="name" type="text" required
                                         class="block w-full pl-3 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg
                                         focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
                                         dark:bg-gray-700 dark:text-white text-sm"
                                         placeholder="Doe">
                                 </div>
                             </div>
-                        </div>
+
 
                         <!-- Email Field -->
                         <div class="space-y-2">
@@ -254,7 +237,7 @@
                     type: 'POST',
                     data: {
                         first_name: $('#firstName').val(),
-                        last_name: $('#lastName').val(),
+                        name: $('#name').val(),
                         email: $('#email').val(),
                         password: password,
                         password_confirmation: passwordConfirmation,
