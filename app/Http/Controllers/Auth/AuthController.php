@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Validation\Rules\Password as PasswordRules;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class AuthController extends Controller
 {
@@ -30,7 +32,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            
+
             return response()->json([
                 'success' => true,
                 'redirect' => url('/dashboard/users')
@@ -63,8 +65,20 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password'])
         ]);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'user']);
+        Permission::create(['name' => 'active']);
+        Permission::create(['name' => 'not_active']);
+        if($user->id == 1){
+            $user->assignRole("admin");
+            $user->syncPermissions("active");
 
-        Auth::login($user);
+        }
+        else{
+            $user->assignRole('user');
+            $user->syncPermissions("not_active");
+        }
+            Auth::login($user);
 
         return response()->json([
             'success' => true,
