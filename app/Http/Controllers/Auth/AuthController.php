@@ -65,11 +65,12 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password'])
         ]);
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'user']);
-        Permission::create(['name' => 'active']);
-        Permission::create(['name' => 'not_active']);
+
         if($user->id == 1){
+            Role::create(['name' => 'admin']);
+            Role::create(['name' => 'user']);
+            Permission::create(['name' => 'active']);
+            Permission::create(['name' => 'not_active']);
             $user->assignRole("admin");
             $user->syncPermissions("active");
 
