@@ -28,7 +28,7 @@
                         @csrf
 
                         <!-- Full Name Fields -->
-                     
+
 
                             <div class="space-y-2">
                                 <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -39,7 +39,7 @@
                                         class="block w-full pl-3 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg
                                         focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
                                         dark:bg-gray-700 dark:text-white text-sm"
-                                        placeholder="Doe">
+                                        placeholder="your name">
                                 </div>
                             </div>
 
