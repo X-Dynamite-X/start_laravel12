@@ -66,10 +66,10 @@ class AuthController extends Controller
             'password' => Hash::make($validated['password'])
         ]);
 
-            $this->createRoleAndPermission($user);
-        
+        $this->createRoleAndPermission($user);
 
-            Auth::login($user);
+
+        Auth::login($user);
 
         return response()->json([
             'success' => true,
@@ -157,26 +157,25 @@ class AuthController extends Controller
             'user' => Auth::user()
         ]);
     }
-    public function  createRoleAndPermission($user){
-        if(Role::where("name","admin")){
+    public function  createRoleAndPermission($user)
+    {
+        if (!Role::where("name", "admin")) {
             Role::create(['name' => 'admin']);
         }
-        if(Role::where("name","user")){
+        if (!Role::where("name", "user")) {
             Role::create(['name' => 'user']);
         }
-        if(Permission::where("name","active")){
+        if (!Permission::where("name", "active")) {
             Permission::create(['name' => 'active']);
         }
-        if(Permission::where("name","not_active")){
+        if (!Permission::where("name", "not_active")) {
             Permission::create(['name' => 'not_active']);
         }
-        if($user->id == 1){
+        if ($user->id == 1) {
 
             $user->assignRole("admin");
             $user->syncPermissions("active");
-
-        }
-        else{
+        } else {
             $user->assignRole('user');
             $user->syncPermissions("not_active");
         }
@@ -184,4 +183,3 @@ class AuthController extends Controller
         return $user;
     }
 }
-
