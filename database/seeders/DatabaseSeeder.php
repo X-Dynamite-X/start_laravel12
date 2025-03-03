@@ -22,21 +22,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Create admin user
-        // $user = User::factory()->create([
-        //     'name' => 'dynamite',
-        //     'email' => 'dynamite@Gmail.com',
-        //     'password' => bcrypt('123'),
-        // ]);
-        // $user->assignRole('admin');
-        // $user->syncPermissions("active");
+        $user = User::factory()->create([
+            'name' => 'dynamite',
+            'email' => 'dynamite@Gmail.com',
+            'password' => bcrypt('123'),
+        ]);
+        $user->assignRole('admin');
+        $user->syncPermissions("active");
 
-        // $user = User::factory()->create([
-        //     'name' => 'madara',
-        //     'email' => 'madara@Gmail.com',
-        //     'password' => bcrypt('123'),
-        // ]);
-        // $user->assignRole('user');
-        // $user->syncPermissions("active");
+        $user = User::factory()->create([
+            'name' => 'madara',
+            'email' => 'madara@Gmail.com',
+            'password' => bcrypt('123'),
+        ]);
+        $user->assignRole('user');
+        $user->syncPermissions("active");
         // Create regular users and subjects
         // User::factory(1000)->create();
         // Subject::factory(20)->create();

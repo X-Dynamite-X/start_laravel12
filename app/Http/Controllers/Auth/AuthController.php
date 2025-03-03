@@ -78,15 +78,7 @@ class AuthController extends Controller
             'password' => Hash::make($validated['password'])
         ]);
 
-        if ($user->id == 1) {
-
-            $user->assignRole("admin");
-            $user->syncPermissions("active");
-        } else {
-            $user->assignRole('user');
-            $user->syncPermissions("not_active");
-        }
-
+ 
 
         Auth::login($user);
 
@@ -176,23 +168,5 @@ class AuthController extends Controller
             'user' => Auth::user()
         ]);
     }
-    public function  createRoleAndPermission()
-    {
-        if (!Role::where("name", "admin")) {
-            Role::create(['name' => 'admin']);
-        }
-        if (!Role::where("name", "user")) {
-            Role::create(['name' => 'user']);
-        }
-        if (!Permission::where("name", "active")) {
-            Permission::create(['name' => 'active']);
-        }
-        if (!Permission::where("name", "not_active")) {
-            Permission::create(['name' => 'not_active']);
-        }
-        return response()->json([
-            'success' => true,
-            'message' => 'Role and Permission created successfully'
-        ]);
-    }
+  
 }
